@@ -50,4 +50,27 @@ document.addEventListener('DOMContentLoaded', () => {
       fabToggle.classList.toggle('active');
     });
   }
+
+  // Modal Logic
+  const registerBtn = document.getElementById('registerBtn');
+  const registerModal = document.getElementById('registerModal');
+  const closeModal = document.getElementById('closeModal');
+
+  if(registerBtn && registerModal && closeModal) {
+    registerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      registerModal.classList.add('show');
+    });
+
+    closeModal.addEventListener('click', () => {
+      registerModal.classList.remove('show');
+    });
+
+    // Close when clicking outside
+    registerModal.addEventListener('click', (e) => {
+      if(e.target === registerModal) {
+        registerModal.classList.remove('show');
+      }
+    });
+  }
 });
