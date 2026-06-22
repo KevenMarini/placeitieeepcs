@@ -1,10 +1,94 @@
 import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Advanced Intro Loader Logic
+  const introLoader = document.getElementById('introLoader');
+  const typewriterText = document.getElementById('typewriterText');
+  const glitchWrapper = document.querySelector('.glitch-wrapper');
+  const presentsText = document.getElementById('presentsText');
+  const placeitLogo = document.getElementById('placeitLogo');
+
+  if(introLoader && typewriterText) {
+    const textToType = "IEEE Professional Communication Society";
+    let i = 0;
+    
+    // Typewriter effect
+    function typeWriter() {
+      if (i < textToType.length) {
+        typewriterText.innerHTML += textToType.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50); // Speed of typing
+      } else {
+        // After typing, show presents glitch
+        setTimeout(() => {
+          glitchWrapper.style.visibility = 'visible';
+          presentsText.innerText = "PRESENTS";
+          
+          // Then show the neon logo
+          setTimeout(() => {
+            placeitLogo.classList.add('show');
+            
+            // Finally fade out the loader
+            setTimeout(() => {
+              introLoader.classList.add('intro-hidden');
+              document.body.style.overflow = 'auto'; // restore scroll
+              
+              // Remove loader from DOM entirely after fade
+              setTimeout(() => {
+                introLoader.remove();
+              }, 1000);
+            }, 2500);
+            
+          }, 1500);
+          
+        }, 800);
+      }
+    }
+    
+    // Start animation shortly after load
+    setTimeout(typeWriter, 500);
+  }
+
+  // Custom Mouse Glow Follower
+  const mouseGlow = document.getElementById('mouseGlow');
+  if (mouseGlow) {
+    document.addEventListener('mousemove', (e) => {
+      requestAnimationFrame(() => {
+        mouseGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      });
+    });
+    
+    // Hide glow when cursor leaves window
+    document.addEventListener('mouseleave', () => {
+      mouseGlow.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      mouseGlow.style.opacity = '1';
+    });
+  }
+
   // Navigation scroll effect
   const navbar = document.getElementById('navbar');
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-links a');
   
   window.addEventListener('scroll', () => {
+    let current = '';
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= (sectionTop - 250)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === `#${current}`) {
+        a.classList.add('active');
+      }
+    });
+
     if (window.scrollY > 50) {
       navbar.style.background = 'rgba(5, 11, 20, 0.95)';
       navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
@@ -20,23 +104,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.1
+    threshold: 0.15
   };
 
-  const observer = new IntersectionObserver((entries, observer) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // only animate once
+      } else {
+        // Remove class when scrolling out of view to re-animate when scrolling back
+        entry.target.classList.remove('visible');
       }
     });
   }, observerOptions);
 
-  // Add fade-in class to main sections and cards
+  // Add scroll-anim class to main sections and cards
   const animatableElements = document.querySelectorAll('.section-header, .glass-card, .timeline-item, .feature-item, .prize-card');
   
   animatableElements.forEach(el => {
-    el.classList.add('fade-in');
+    el.classList.add('scroll-anim');
     observer.observe(el);
   });
 

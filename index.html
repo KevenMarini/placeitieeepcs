@@ -10,8 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* Critical Loader CSS to prevent FOUC */
+      body { margin: 0; background: #02050a; overflow: hidden; }
+      #introLoader {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: #02050a; z-index: 99999;
+        display: flex; justify-content: center; align-items: center;
+        flex-direction: column; transition: opacity 0.8s ease-in-out;
+      }
+      .intro-hidden { opacity: 0; pointer-events: none; }
+    </style>
   </head>
   <body>
+    <!-- Mouse Glow Follower -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- Intro Loader -->
+    <div id="introLoader">
+      <div class="loader-content">
+        <div class="typewriter-container">
+          <span id="typewriterText"></span><span class="cursor">_</span>
+        </div>
+        <div class="glitch-wrapper">
+          <span id="presentsText" class="glitch" data-text="PRESENTS"></span>
+        </div>
+        <h1 id="placeitLogo" class="neon-zoom">PLACEIT <span class="year">2026</span></h1>
+      </div>
+      <div class="scanline"></div>
+    </div>
+
     <!-- Navbar -->
     <nav id="navbar">
       <div class="nav-container">
