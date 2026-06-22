@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.scrollY > 50) {
       navbar.style.background = 'rgba(5, 11, 20, 0.95)';
       navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
-      navbar.style.padding = '0.5rem 0';
+      navbar.style.padding = '0.25rem 0';
     } else {
       navbar.style.background = 'rgba(5, 11, 20, 0.8)';
       navbar.style.boxShadow = 'none';
-      navbar.style.padding = '1rem 0';
+      navbar.style.padding = '0.5rem 0';
     }
   });
 
@@ -70,6 +70,27 @@ document.addEventListener('DOMContentLoaded', () => {
     registerModal.addEventListener('click', (e) => {
       if(e.target === registerModal) {
         registerModal.classList.remove('show');
+      }
+    });
+  }
+
+  // Poster Lightbox Logic
+  const posterTrigger = document.getElementById('posterTrigger');
+  const posterModal = document.getElementById('posterModal');
+  const closePosterModal = document.getElementById('closePosterModal');
+
+  if(posterTrigger && posterModal && closePosterModal) {
+    posterTrigger.addEventListener('click', () => {
+      posterModal.classList.add('show');
+    });
+
+    closePosterModal.addEventListener('click', () => {
+      posterModal.classList.remove('show');
+    });
+
+    posterModal.addEventListener('click', (e) => {
+      if(e.target === posterModal) {
+        posterModal.classList.remove('show');
       }
     });
   }

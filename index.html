@@ -32,36 +32,44 @@
         <div class="glow glow-1"></div>
         <div class="glow glow-2"></div>
       </div>
-      <div class="container hero-content">
-        <div class="hero-logos">
-          <span class="logo-box"><i class="fa-solid fa-microchip"></i> IEEE PCS</span>
-          <span class="logo-box">graVITas'26</span>
-          <span class="logo-box">VIT VELLORE</span>
-        </div>
-        <h2 class="tagline">IDEAS DON'T JUST SHAPE THE FUTURE. <br/><span class="text-neon">THEY BUILD IT.</span></h2>
-        
-        <div class="hero-main-title">
-          <h1>PLACEIT <span class="year">2026</span></h1>
-          <p class="subtitle">BLUEPRINTING TOMORROW'S SOLUTIONS</p>
-        </div>
+      <div class="container hero-grid">
+        <div class="hero-content-left">
+          <div class="hero-logos">
+            <span class="logo-box"><i class="fa-solid fa-microchip"></i> IEEE PCS</span>
+            <span class="logo-box">graVITas'26</span>
+            <span class="logo-box">VIT VELLORE</span>
+          </div>
+          <h2 class="tagline">IDEAS DON'T JUST SHAPE THE FUTURE. <br/><span class="text-neon">THEY BUILD IT.</span></h2>
+          
+          <div class="hero-main-title">
+            <h1>PLACEIT <span class="year">2026</span></h1>
+            <p class="subtitle">BLUEPRINTING TOMORROW'S SOLUTIONS</p>
+          </div>
 
-        <div class="hero-description">
-          <p>PlaceIT is back this September as part of graVITas'26!</p>
-          <p>A two-day immersive ideathon where innovators transform ideas into impactful solutions.</p>
-          <p class="highlight-text">Think. Design. Pitch.</p>
-        </div>
+          <div class="hero-description">
+            <p>PlaceIT is back this September as part of graVITas'26!</p>
+            <p>A two-day immersive ideathon where innovators transform ideas into impactful solutions.</p>
+            <p class="highlight-text">Think. Design. Pitch.</p>
+          </div>
 
-        <div class="stats-bar">
-          <div class="stat"><i class="fa-solid fa-users"></i> Teams of 2-4</div>
-          <div class="stat"><i class="fa-solid fa-graduation-cap"></i> All Disciplines</div>
-          <div class="stat"><i class="fa-solid fa-lightbulb"></i> Innovate</div>
-          <div class="stat"><i class="fa-solid fa-pen-ruler"></i> Design Thinking</div>
-          <div class="stat"><i class="fa-solid fa-code"></i> Build MVPs</div>
-          <div class="stat"><i class="fa-solid fa-trophy"></i> Pitch & Win</div>
-        </div>
+          <div class="stats-bar">
+            <div class="stat"><i class="fa-solid fa-users"></i> Teams of 2-4</div>
+            <div class="stat"><i class="fa-solid fa-graduation-cap"></i> All Disciplines</div>
+            <div class="stat"><i class="fa-solid fa-lightbulb"></i> Innovate</div>
+            <div class="stat"><i class="fa-solid fa-pen-ruler"></i> Design Thinking</div>
+            <div class="stat"><i class="fa-solid fa-code"></i> Build MVPs</div>
+            <div class="stat"><i class="fa-solid fa-trophy"></i> Pitch & Win</div>
+          </div>
 
-        <div class="hero-date">
-          <i class="fa-regular fa-calendar-days"></i> 12 — 13 SEPTEMBER 2026
+          <div class="hero-date">
+            <i class="fa-regular fa-calendar-days"></i> 12 — 13 SEPTEMBER 2026
+          </div>
+        </div>
+        <div class="hero-content-right">
+          <div class="poster-preview-wrapper" id="posterTrigger">
+            <img src="/poster.png" alt="PlaceIT 2026 Poster" class="poster-preview">
+            <div class="click-to-enlarge"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to enlarge</div>
+          </div>
         </div>
       </div>
     </section>
@@ -405,6 +413,12 @@
         <h2>Registration Opening Soon!</h2>
         <p>We are currently finalizing the details. Registration for PlaceIT 2026 will open shortly. Stay tuned to our social media for updates!</p>
       </div>
+    </div>
+
+    <!-- Poster Lightbox Modal -->
+    <div class="modal-overlay" id="posterModal">
+      <button class="modal-close" id="closePosterModal"><i class="fa-solid fa-xmark"></i></button>
+      <img src="/poster.png" alt="PlaceIT 2026 Poster Full" class="lightbox-image">
     </div>
 
     <script type="module" src="/src/main.js"></script>
