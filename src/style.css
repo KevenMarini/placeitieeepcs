@@ -1081,3 +1081,80 @@ footer {
     margin-top: 3rem;
   }
 }
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001; /* To stay above the mobile menu */
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(5, 11, 20, 0.98);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid var(--glass-border);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    right: 0;
+    border-left-color: var(--neon-blue);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .nav-links li a {
+    font-size: 1.2rem;
+  }
+  
+  /* Hero adjustments for smaller screens */
+  .hero-main-title h1 {
+    font-size: 3.5rem;
+  }
+  
+  .tagline {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+
+  .hero-logos {
+    justify-content: center;
+  }
+}
