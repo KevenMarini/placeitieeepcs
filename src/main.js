@@ -1,6 +1,56 @@
 import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Helper for typing HTML elements
+  function typeWriterHTML(element, htmlString, speed, callback) {
+    if(!element) return;
+    element.innerHTML = '';
+    element.style.visibility = 'visible';
+    let i = 0;
+    let isTag = false;
+    let text = '';
+
+    function type() {
+      if (i < htmlString.length) {
+        if (htmlString.charAt(i) === '<') {
+          isTag = true;
+        }
+        text += htmlString.charAt(i);
+        element.innerHTML = text;
+        i++;
+        if (isTag) {
+          if (htmlString.charAt(i-1) === '>') {
+            isTag = false;
+          }
+          type(); // No delay for tags
+        } else {
+          setTimeout(type, speed);
+        }
+      } else if (callback) {
+        callback();
+      }
+    }
+    type();
+  }
+
+  const heroTagline = document.getElementById('heroTagline');
+  const heroTitle = document.getElementById('heroTitle');
+  const heroSubtitle = document.getElementById('heroSubtitle');
+
+  const taglineHTML = `IDEAS DON'T JUST SHAPE THE FUTURE. <br/><span class="text-neon">THEY BUILD IT.</span>`;
+  const titleHTML = `PLACEIT <span class="year">2026</span>`;
+  const subtitleHTML = `BLUEPRINTING TOMORROW'S SOLUTIONS`;
+
+  function startHeroTypewriter() {
+    if(!heroTagline) return;
+    typeWriterHTML(heroTagline, taglineHTML, 20, () => {
+      typeWriterHTML(heroTitle, titleHTML, 50, () => {
+        typeWriterHTML(heroSubtitle, subtitleHTML, 20);
+      });
+    });
+  }
+
   // Advanced Intro Loader Logic
   const introLoader = document.getElementById('introLoader');
   const typewriterText = document.getElementById('typewriterText');
@@ -33,6 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
               introLoader.classList.add('intro-hidden');
               document.body.style.overflow = 'auto'; // restore scroll
               
+              // Trigger hero typewriter
+              startHeroTypewriter();
+              
               // Remove loader from DOM entirely after fade
               setTimeout(() => {
                 introLoader.remove();
@@ -47,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Start animation shortly after load
     setTimeout(typeWriter, 500);
+  } else {
+    setTimeout(startHeroTypewriter, 500);
   }
 
   // Custom Mouse Glow Follower
