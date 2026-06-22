@@ -833,6 +833,8 @@ footer {
 
 .contact-card p {
   margin-bottom: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .contact-card a {
@@ -909,6 +911,12 @@ footer {
     gap: 1rem;
     text-align: center;
     padding-bottom: 3rem;
+  }
+  
+  .contact-card {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
   }
 }
 
@@ -1350,6 +1358,7 @@ footer {
   opacity: 0;
   transform: scale(0.5);
   filter: blur(10px);
+  text-align: center;
 }
 
 .neon-zoom.show {
