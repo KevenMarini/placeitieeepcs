@@ -39,4 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.add('fade-in');
     observer.observe(el);
   });
+
+  // FAB Logic
+  const fabToggle = document.getElementById('fabToggle');
+  const fabLinks = document.querySelector('.fab-links');
+  
+  if(fabToggle && fabLinks) {
+    fabToggle.addEventListener('click', () => {
+      fabLinks.classList.toggle('open');
+      fabToggle.classList.toggle('active');
+    });
+  }
 });
