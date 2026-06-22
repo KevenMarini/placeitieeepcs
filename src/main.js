@@ -55,6 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function startHeroTypewriter() {
     if(!heroTagline) return;
     typeWriterHTML(heroTagline, taglineHTML, 10, () => {
+      
+      // Fade in poster immediately after tagline
+      if(posterWrapper) posterWrapper.classList.add('fade-in-up');
+
       typeWriterHTML(heroTitle, titleHTML, 20, () => {
         typeWriterHTML(heroSubtitle, subtitleHTML, 10, () => {
           typeWriterHTML(heroDesc1, desc1HTML, 15, () => {
@@ -72,11 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                   if(heroDateAnim) heroDateAnim.classList.add('fade-in-up');
                 }, statAnims.length * 100 + 100);
-
-                // Fade in poster
-                setTimeout(() => {
-                  if(posterWrapper) posterWrapper.classList.add('fade-in-up');
-                }, statAnims.length * 100 + 300);
 
               });
             });
