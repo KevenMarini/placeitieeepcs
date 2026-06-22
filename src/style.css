@@ -992,3 +992,10 @@ footer {
   color: var(--text-main);
   font-size: 1.1rem;
 }
+
+/* Update Logo */
+.nav-logo {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 0 5px var(--neon-blue-glow));
+}
