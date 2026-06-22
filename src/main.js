@@ -37,16 +37,51 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroTagline = document.getElementById('heroTagline');
   const heroTitle = document.getElementById('heroTitle');
   const heroSubtitle = document.getElementById('heroSubtitle');
+  const heroDesc1 = document.getElementById('heroDesc1');
+  const heroDesc2 = document.getElementById('heroDesc2');
+  const heroDesc3 = document.getElementById('heroDesc3');
 
   const taglineHTML = `IDEAS DON'T JUST SHAPE THE FUTURE. <br/><span class="text-neon">THEY BUILD IT.</span>`;
   const titleHTML = `PLACEIT <span class="year">2026</span>`;
   const subtitleHTML = `BLUEPRINTING TOMORROW'S SOLUTIONS`;
+  const desc1HTML = `PlaceIT is back this September as part of graVITas'26!`;
+  const desc2HTML = `A two-day immersive ideathon where innovators transform ideas into impactful solutions.`;
+  const desc3HTML = `Think. Design. Pitch.`;
+
+  const statAnims = document.querySelectorAll('.stat-anim');
+  const heroDateAnim = document.getElementById('heroDateAnim');
+  const posterWrapper = document.getElementById('posterTrigger');
 
   function startHeroTypewriter() {
     if(!heroTagline) return;
-    typeWriterHTML(heroTagline, taglineHTML, 20, () => {
-      typeWriterHTML(heroTitle, titleHTML, 50, () => {
-        typeWriterHTML(heroSubtitle, subtitleHTML, 20);
+    typeWriterHTML(heroTagline, taglineHTML, 10, () => {
+      typeWriterHTML(heroTitle, titleHTML, 20, () => {
+        typeWriterHTML(heroSubtitle, subtitleHTML, 10, () => {
+          typeWriterHTML(heroDesc1, desc1HTML, 15, () => {
+            typeWriterHTML(heroDesc2, desc2HTML, 15, () => {
+              typeWriterHTML(heroDesc3, desc3HTML, 15, () => {
+                
+                // Fade in stats one by one
+                statAnims.forEach((stat, index) => {
+                  setTimeout(() => {
+                    stat.classList.add('fade-in-up');
+                  }, index * 100);
+                });
+                
+                // Fade in date
+                setTimeout(() => {
+                  if(heroDateAnim) heroDateAnim.classList.add('fade-in-up');
+                }, statAnims.length * 100 + 100);
+
+                // Fade in poster
+                setTimeout(() => {
+                  if(posterWrapper) posterWrapper.classList.add('fade-in-up');
+                }, statAnims.length * 100 + 300);
+
+              });
+            });
+          });
+        });
       });
     });
   }

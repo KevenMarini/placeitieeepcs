@@ -1403,3 +1403,9 @@ footer {
   transform: translateY(0) scale(1);
   filter: blur(0px);
 }
+
+.fade-in-up {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
